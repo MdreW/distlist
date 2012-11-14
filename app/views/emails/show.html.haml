@@ -1,0 +1,16 @@
+%article{id: @campaign.div}
+  = render "campaign_details"
+  #more_content
+    %section{id: 'emails'}
+      %h2.tcenter= t("emails.title")
+      = render "email_details"
+      .tcenter.clear
+        = link_to t("site.common.back").html_safe + image_tag('16/back.png'), campaign_emails_path(@campaign)
+        = " | "
+        = link_to t("site.common.edit").html_safe + image_tag('16/edit.png'), edit_campaign_email_path(@email.campaign, @email)
+        = " | "
+        = link_to t("site.emails.send").html_safe + image_tag('16/mail.png'), mail_me_campaign_email_path(@email.campaign, @email), :method => :put
+        = " | "
+        = link_to t("site.common.destroy").html_safe + image_tag('16/destroy.png'), campaign_email_path(@campaign, @email), method: :delete, data: {confirm: I18n.t('site.common.are_sure')}
+
+

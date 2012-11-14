@@ -1,0 +1,59 @@
+it:
+  site:
+    common:
+      add: 'Aggiungi'
+      address: "Indirizzo"
+      addresses: "Indirizzi"
+      are_sure: "Sei sicuro?"
+      back: 'Indietro'
+      campaign: "Campagna"
+      campaigns: "Campagne"
+      details: "Dettagli"
+      edit: 'Modifica'
+      email: "Email"
+      emails: "Email"
+      export: 'Esporta'
+      destroy: 'Elimina'
+      import: 'Importa'
+      new: "Nuovo"
+      user: "Utente"
+      users: "Utenti"
+
+    attachments:
+      title: "Gestione allegati"
+      title_list: "Lista allegati"
+      new_attachment: "Nuovo allegato"
+      
+
+    campaigns:
+      title: "Gestione campagne"
+      edit_campaign: "Modifica campagna"
+      new_campaign: "Nuova campagna"
+      statistics: "Statistiche campagna"
+      sender: "Mittente"
+      campaign_details: "Dettagli campagna"
+      header: "Intestazione"
+      footer: "chiusura"
+      time_gap: "Gap d'invio"
+      email_count: "Numero email"
+      
+
+    emails:
+      send: "Invia"
+      title: "Gestione emails"
+      subject: "Oggetto"
+      body: "Messaggio"
+      last_send: "Ultimo invio"
+      log_entry: "Invii"
+      view_log: "Mostra log"
+      new_email: "Nuova email"
+      edit_email: "Modifica email"
+
+    users:
+      title: "Gestione utenti"
+      title_list: "Lista utenti"
+      new_user: "Nuovo utente"
+      swadmin: "Admin Switch"
+      endis: "Abilita/Disabilita"
+
+

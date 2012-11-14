@@ -1,0 +1,22 @@
+%article{id: "distlist"}
+  %h1.tcenter= t('devise.sessions.title')
+  .description.slide
+    = image_tag('bg/Slide.jpg')
+    .t4.tcenter
+      %span.blu= t('devise.sessions.description1').html_safe
+      %span.little= t('devise.sessions.description2').html_safe
+      %span.red= t('devise.sessions.description3').html_safe
+    .clear
+  #more_content
+    %h2.tcenter= t('devise.sessions.title2')
+    = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+      %fieldset
+        %div.form-inputs
+          .separator= f.input :email, :required => false, :autofocus => true
+          .separator= f.input :password, :required => false
+          .separator= f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
+
+        %div.form-actions
+          = f.button :submit, "Sign in"
+
+    .tcenter= render "devise/shared/links"

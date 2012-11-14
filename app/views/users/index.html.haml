@@ -1,0 +1,8 @@
+%article{id: 'users'}
+  %h1.tcenter= t("site.users.title")
+  = render "user_info"
+  #more_content
+    %h2.tcenter= t('site.users.title_list')
+    %ul.list= render @users
+    .tcenter.p10
+      =link_to t('site.common.new'), new_user_path

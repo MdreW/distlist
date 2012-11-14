@@ -1,0 +1,14 @@
+%section{id: @email.div}
+
+  = simple_form_for([@email.campaign, @email]) do |f|
+    %fieldset
+      %legend= @email.new_record? ? t("site.emails.new_email") : t("site.emails.edit_email")
+      = f.error_notification
+
+      .form-inputs
+        .separator= f.input :subject
+        .separator= f.input :body, :class => "elrte"
+
+      .form-actions
+        .separator= f.button :submit
+

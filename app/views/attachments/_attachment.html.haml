@@ -1,0 +1,7 @@
+%article{id: attachment.div}
+  .list{class: cycle('bdark','bnormal')}
+    = image_tag(attachment.atype_img)
+    = link_to attachment.file_file_name, campaign_email_attachment_path(@campaign, @email, attachment)
+    %span.little= " | ".html_safe + link_to( apublic_url(attachment.id, attachment.file_file_name), apublic_url(attachment.id, attachment.file_file_name)) if attachment.atype == 'offline'
+    %span.fright
+      = link_to image_tag("16/destroy.png"), campaign_email_attachment_path(@campaign, @email, attachment), method: :delete, data: {notice: t('site.common.are_sure')}

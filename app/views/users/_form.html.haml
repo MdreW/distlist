@@ -1,0 +1,13 @@
+= simple_form_for(@user) do |f| 
+  %fieldset
+    %legend= t("site.users.new_user") 
+
+    .form-inputs
+      .separator= f.input :email
+
+      .separator= f.input :password
+
+      .separator= f.input :password_confirmation
+
+    %div{class: "form-actions"}
+      .separator= f.button :submit

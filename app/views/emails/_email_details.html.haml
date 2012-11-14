@@ -1,0 +1,42 @@
+%section{id: @email.div}
+  .description
+    %h3.tcenter= @email.title
+
+    .details
+      %dl.mleft
+        .clear
+          %dt= t("site.emails.subject")
+          %dd= @email.subject
+
+        .clear
+          %dt= t("site.emails.body")
+          %dd= @email.body.html_safe
+        
+        .clear
+          %dt= t("site.emails.last_send")
+          %dd= @email.logs.empty? ? " - " : @email.logs.last.created_at
+
+        .clear
+          %dt= t("site.emails.log_entry")
+          %dd= @email.logs.empty? ? " - " : @email.logs.last.row_count
+
+        .clear
+          %dt= t("site.emails.view_log")
+          %dd= @email.logs.empty? ? " - " : simple_form_for([@email.campaign, @email], :url => getlog_campaign_email_path(@email.campaign, @email)) {|f| f.input_field :idlog, :collection => @email.logs, :label_method => :label}
+    .bottom.tcenter
+      = link_to t("site.common.edit"), edit_campaign_email_path(@campaign, @email)
+
+
+  %section{id: "attachments"}
+    = simple_form_for([@email.campaign, @email, @email.attachments.new], multipart: true) do |f|
+      %fieldset
+        %legend= t("site.attachments.new_attachment")
+        = f.error_notification
+        .inline.separator
+          = f.input :file, as: :file
+          = f.input :atype, collection: ['inline','offline','attached'], as: :radio_buttons
+          = f.button :submit
+    .description
+      %h3= t('site.attachments.title_list')
+      = render @email.attachments.all
+

@@ -1,0 +1,12 @@
+%article{id: @campaign.div}
+  = render :partial => "campaign_details"
+  #more_content
+    %section{id: 'emails'}
+      %h2.tcenter= t("site.email.title")
+      %ul.list= render @emails
+      .command
+        = paginate @emails
+        = link_to( t('site.common.back').html_safe + image_tag("16/back.png"), campaign_emails_path(@campaign))
+        = " | "
+        = link_to( t('site.common.new').html_safe + image_tag("16/new.png"), new_campaign_email_path(@campaign))
+

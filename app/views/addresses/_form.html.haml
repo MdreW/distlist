@@ -1,0 +1,24 @@
+%section{id: @address.div}
+  
+  = simple_form_for([@campaign, @address]) do |f|
+    %fieldset
+      %legend= @address.new_record? ? t("addresses.new_address") : @address.recipient
+      = f.error_notification
+
+      .form-inputs
+        .separator= f.input :email
+        .separator= f.input :name
+        .separator= f.input :surname
+
+        %br
+      
+        = f.simple_fields_for :options do |o|
+          %div{class: ['inline', 'separator'] }
+            = o.input :key, input_html: {size: 10}
+            = o.input :value, input_html: {size: 10}
+            = o.input :_destroy, :as => :select, :include_blank => false, :default => false
+
+        %br
+      .form-actions
+        = f.button :submit
+

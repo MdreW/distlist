@@ -1,0 +1,2 @@
+$('#new_attachment')[0].reset();
+$("#attachments").append("#{escape_javascript(render :partial => 'attachment', :locals => {:attachment => @attachment})}");

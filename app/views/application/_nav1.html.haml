@@ -1,0 +1,20 @@
+%nav
+  %ul
+    - if user_signed_in?
+      %li.user
+        = t("menu.welcome")
+        = current_user.email
+    %li
+      = link_to t("menu.home"), root_path
+    - if defined?(@campaign) and !@campaign.new_record?
+      %li
+        = link_to t("menu.campaign"), campaign_path(@campaign)
+        %ul
+          %li= link_to t("menu.emails"), campaign_emails_path(@campaign)
+          %li= link_to t("menu.addresses"), campaign_addresses_path(@campaign)
+    %li= link_to t("menu.help"), :helpdesk
+    - if current_user.try(:admin?)
+      %li= link_to t("menu.admin"), admin_path
+    - if user_signed_in?
+      %li= link_to image_tag('24/logout.png'), logout_path
+

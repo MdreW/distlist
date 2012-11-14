@@ -1,0 +1,10 @@
+%h2= t("site.campaigns.statistics")
+.description
+  %h3= t("site.campaigns.statistics")
+  %dl
+    .clear
+      %dt= link_to t("site.common.emails"), campaign_emails_path(@campaign)
+      %dd= @campaign.emails.count
+    .clear
+      %dt= link_to t("site.common.addresses"), campaign_addresses_path(@campaign)
+      %dd= @campaign.addresses.count

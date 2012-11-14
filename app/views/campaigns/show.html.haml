@@ -1,0 +1,8 @@
+%article{id: @campaign.div}
+  = render :partial => "campaign_details"
+  #more_content
+    = render :partial => "statistics"
+    .command
+      = link_to(t('site.common.emails').html_safe + image_tag('16/mail.png'), campaign_emails_path(@campaign))
+      = " | "
+      = link_to(t('site.common.addresses').html_safe + image_tag('16/people.png'), campaign_addresses_path(@campaign))

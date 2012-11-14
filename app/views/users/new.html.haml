@@ -1,0 +1,7 @@
+%h1= t("site.users.title")
+= render "user_info"
+#more-contents
+  %h2.tcenter= t('site.users.title_list')
+  = render 'form'
+  .tcenter.p10
+    = link_to t('site.common.back'), users_path

@@ -1,0 +1,14 @@
+%section{:id => campaign.div, class: cycle('bdark',nil) }
+  = link_to(campaign.title, campaign)
+  %span{class: "fright"}= link_to( image_tag("22/edit.png"), campaign )
+  .details.little
+    %dl{:class => 'linear'}
+      %dt= image_tag( "16/next.png" )
+      %dd= campaign.emails.sended.count
+
+      %dt= image_tag( "16/mail-new.png" )
+      %dd= campaign.emails.not_sended.count
+
+      %dt= image_tag( "16/people.png" )
+      %dd= campaign.addresses.count
+  .clear

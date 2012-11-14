@@ -1,0 +1,28 @@
+!!! 5
+%html
+  %head
+    %title= "DistList"
+    %meta{ :content => "Mass Mailer", :name => "description" }
+    %meta{ :content => "Andrea Ranaldi", :name => "author" }
+    %meta{ :content => "1 days", :name => "revisit-after" }
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+
+    = csrf_meta_tags
+
+  %body
+    %header
+      %h1
+        = image_tag('mail.png')
+        DistList
+      = render(:partial => "nav1")
+
+    #content
+      = content_tag(:div, notice, :class => "notice") unless notice.blank?
+      = content_tag(:div, alert, :class => "alert") unless alert.blank?
+      #section= yield
+
+    %footer
+      %p.tcenter
+        Copyright 2012 Andrea Ranaldi
+

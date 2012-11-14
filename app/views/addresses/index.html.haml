@@ -1,0 +1,13 @@
+%article{id: @campaign.div}
+  = render :partial => "campaign_details"
+  #more_content
+    %section{id: 'addresses'}
+      %h2.tcenter= t("addresses.title")
+      %ul.list= render @addresses
+      .command
+        = paginate @addresses
+        = link_to t('site.common.new').html_safe + image_tag('16/new.png'), new_campaign_address_path(@campaign)
+        = " | "
+        = link_to t('site.common.import').html_safe + image_tag('16/import.png'), import_campaign_addresses_path(@campaign)
+        = " | "
+        = link_to t('site.common.export').html_safe + image_tag('16/export.png'), export_campaign_addresses_path(@campaign)

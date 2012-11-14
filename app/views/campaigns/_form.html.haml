@@ -1,0 +1,22 @@
+%h2.tcenter= @campaign.new_record? ? t('site.common.campaign') : @campaign.title
+
+= simple_form_for(@campaign) do |f| 
+  %fieldset
+    %legend= @campaign.new_record? ? t("site.campaigns.new_campaign") : t("site.campaigns.edit_campaign")
+    = f.error_notification
+
+    .form-inputs
+      .separator= f.input :title
+
+      .separator= f.input :sender_name
+
+      .separator= f.input :sender_email
+
+      .separator= f.input :header, :cols => 57, :rows => 4, :class => "elrte"
+
+      .separator= f.input :footer, :cols => 57, :rows => 4, :class => "elrte"
+
+      .separator= f.input :time_gap
+
+    %div{class: "form-actions"}
+      .separator= f.button :submit

@@ -1,0 +1,17 @@
+%li{class: [cycle('bdark','bnormal'), ('disable' if user.access_locked?)]}
+  = user.admin? ? image_tag('16/user-admin.png') : image_tag('16/user-normal.png')
+  = user.email
+  %span.fright.little
+    = link_to t("site.users.swadmin"), swadmin_user_path(user), method: :put
+    |
+    = link_to t("site.users.endis"), endis_user_path(user), method: :put
+    |
+    = link_to t("site.common.destroy"), user_path(user), method: :delete
+  .little
+    = t("users.last")
+    = ": "
+    = user.last_sign_in_at.blank? ? "never" : l(user.last_sign_in_at)
+    = ", "
+    = t("users.campaigns")
+    = ": "
+    = user.campaigns.all.count

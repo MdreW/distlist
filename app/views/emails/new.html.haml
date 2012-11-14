@@ -1,0 +1,8 @@
+%article{id: @campaign.div}
+  = render :partial => "campaign_details"
+  #more_content
+    %section#emails
+      %h2.tcenter= t("emails.title")
+      = render "form"
+      .tcenter.clear
+        = link_to t("site.common.back").html_safe + image_tag('16/back.png'), campaign_emails_path(@campaign)

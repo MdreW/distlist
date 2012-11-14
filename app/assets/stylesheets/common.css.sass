@@ -1,0 +1,297 @@
+$color1: #92A7CA
+$color2: #34d2c2
+$color3: #EfE3A6
+
+$cp1: #DFB362
+$cp2: #C3A164
+$cp2: #B88C3D	
+$cp4: #E7BF76	
+$cp6: #E7C383
+
+$cs11: #DFCB62				
+$cs12: #C3B464
+$cs13: #B8A43D
+$cs14: #E7D576
+$cs15: #E7D783
+$cs21: #DF8E62				
+$cs22: #C38564
+$cs23: #B8683D
+$cs24: #E79D76
+$cs25: #E7A683
+$cs31: #496594
+$cs32: #485D81 
+$cs33: #022a39
+$cs34: #617EAF
+$cs35: #6A83AF
+
+$cb1: #f6f6f6
+$cb2: #C0D4F6
+$cd3: #FFF5C1
+
+$line: 20px
+$margin: 16px
+$width1: 13em
+$width2: 13.5em
+
+html, body
+  font-family: arial, verdana, sans-serif
+  color: #050505
+  line-height: $line
+  margin: 0em
+  padding: 0em
+  background: $cb1
+
+header
+  background: $cs33
+  line-height: 3em
+  margin: 0em
+  nav
+    text-align: right
+    padding-right: 10px
+
+    ul, ul li ul
+      margin: 0px
+      padding: 0px
+      display: inline
+    ul li, ul li ul li
+      color: #ddd
+      font-weight: bold
+      margin: 0px
+      padding: 0px 0px 0px 20px
+      display: inline
+    a
+      color: #ccc
+      font-weight: normal
+      text-decoration: none
+    a:hover
+      color: #fff
+      text-decoration: underline
+  h1
+    position: absolute
+    top: 0em
+    left: 0.5em
+    color: #fff
+    margin: 0em
+    padding: 0em
+    font-size: 200%
+    line-height: 1.5em
+    img
+      vertical-align: top
+
+#content
+  padding-top: 1em
+  background: $cb2 url('bg/stripe.gif') repeat-x top left
+  -webkit-box-shadow: inset 0px 3px 3px 0px rgba(0, 0, 0, 0.5)
+  box-shadow: inset 0px 3px 3px 0px rgba(0, 0, 0, 0.5) 
+
+
+  #more_content
+    border-top: 1px solid $cs33
+    border-bottom: 1px solid $cs33
+    padding: 0em 0em 1em 0em
+    margin-bottom: 2em
+    background: #9ebdc9
+    -webkit-box-shadow: inset 0px 3px 3px 0px rgba(0, 0, 0, 0.5)
+    box-shadow: inset 0px 3px 3px 0px rgba(0, 0, 0, 0.5) 
+    
+    h2
+      width: 30%
+      text-align: center
+      margin: 0em auto 1em auto
+      padding: 0em
+      background: $cs33
+      border-left: 1px solid $cs33
+      border-bottom: 1px solid $cs33
+      border-right: 1px solid $cs33
+      border-radius: 0px 0px 5px 5px
+      line-height: 1.5em
+      color: #fff
+      -webkit-box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.5)
+      box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.5)
+
+a 
+  color: #222
+  font-weight: bold
+  text-decoration: none
+a:hover
+  text-decoration: underline
+  color: #000
+
+.command
+  text-align: center
+  nav.pagination
+    display: inline
+    padding: 0em 0.5em 0em 0.5em
+
+dl, dt, dd, p, img
+  margin: 0px
+  padding: 0px
+  vertical-align: middle
+  line-height: $line
+
+dl
+  dt
+    float: left
+    width: $width1
+    text-align: right
+    padding-right: 1em
+    .fnone
+      float: none
+  dd
+    margin-left: $width2
+    padding: 3px 10px 3px 0.5em
+    border-left: 1px solid $cs33
+    background: $color3
+
+
+dl.linear, dl .linear
+  dt
+    float: left
+    width: auto
+    padding: 0px 5px 0px 5px
+    margin: 0px
+  dd
+    float: left
+    padding: 0px 5px 0px 5px
+    margin: 0px
+    width: $width1
+    border: none
+    background: transparent
+
+.tcenter
+  text-align: center
+
+.tleft
+  text-align: left
+
+.tright
+  text-align: right
+
+.fleft
+  float: left
+
+.fright
+  float: right
+
+.fnone
+  float: none
+
+.clear
+  clear: both
+
+.p5
+  padding: 5px
+.p10
+  padding: 10px
+
+.m10
+  margin: 10px
+
+.bnormal
+  background: inherit
+
+.bdark
+  background: #388baa
+
+.description
+  padding: 1em 0em 1em 1em
+  margin: 1em
+  font: 80%
+  border: 1px solid $cs33
+  border-radius: 5px
+  background: #f5f5f5
+
+  h3
+    font-size: 1em
+    font-weight: normal
+    line-height: 1em
+    margin: -1.7em 0em 0em 0.5em
+    padding: 0.2em
+    float: left
+    background: #f5f5f5
+    border-radius: 5px
+    border: 1px solid $cs33
+
+fieldset
+  padding: 1em
+  margin: 1em
+  font: 80%
+  border-radius: 5px
+
+  label
+    float: left
+    width: $width1
+    margin-right: 20px
+    text-align: right
+    font-weight: bold
+
+  .form-actions
+    padding-left: 220px
+
+  .separator
+    clear: both
+    padding: 0.3em
+
+  .inline
+    padding-left: 156px
+
+    .input, .string, .required
+      display: inline
+
+    label
+      display: inline
+      float: none
+      width: auto
+      padding-left: 0.5em
+
+.little
+  font-size: 0.7em
+  select
+    font-size: 0.7em
+
+.disable
+  background: url('disable-bg.png')
+
+ul.list
+  margin: 0em
+  padding: 0em
+  list-style-type: none
+  li
+    margin: 0em
+    padding: 0.2em 1em
+  dl
+    dd
+      width: auto
+      margin-right: 2em
+
+.notice, .alert
+  text-align: center
+  width: 40%
+  margin: -1.5em auto 0.5em auto
+  background: #f0f0f0
+  border-radius: 5px
+  border: 1px solid $cs33
+  -webkit-box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.5)
+  box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.5)
+
+.slide
+  padding: 1em
+  font-weight: bold
+  line-height: 1.5em
+  img
+    float: left
+    margin-right: 1em
+    height: 200px
+  .t1
+    font-size: 25px
+  .t2
+    font-size: 50px
+  .t3
+    font-size: 75px
+  .t4
+    font-size: 75px
+    line-height: 200px
+.blu
+  color: $cs33
+.red
+  color: $cs23

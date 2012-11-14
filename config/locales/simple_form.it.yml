@@ -1,0 +1,71 @@
+it:
+  simple_form:
+    "yes": 'Si'
+    "no": 'No'
+    required:
+      text: 'Richiesto'
+      mark: '*'
+    error_notification:
+      default_message: "Controllare i problemi indicati: "
+
+    labels:
+      address:
+        new:
+          email: 'Email'
+          name: 'Nome'
+          surname: 'Cognome'
+        edit:
+          email: 'Email'
+          name: 'Nome'
+          surname: 'Cognome'
+      attachment:
+        new:
+          file: "Nome file"
+          atype: "Tipo"
+        edit:
+          file: "Nome File"
+          atype: "Tipoa"
+      campaign:
+        new:
+          title: 'Titolo'
+          sender_name: 'Nome mittente'
+          sender_email: 'Email mittente'
+          header: 'Intestazione'
+          footer: 'Chiusura'
+          time_gap: "Gap d'invio"
+        edit:
+          title: 'Titolo'
+          sender_name: 'Nome mittente'
+          sender_email: 'Email mittente'
+          header: 'Intestazione'
+          footer: 'Chiusura'
+          time_gap: "Gap d'invio"
+      email:
+        new:
+          subject: "Oggetto"
+          body: "Corpo"
+        edit:
+          subject: 'Titolo'
+          body: 'Corpo'
+      option:
+        new:
+          key: 'Chiave'
+          value: 'Valore'
+        edit:
+          key: 'Chiave'
+          value: 'Valore'
+          
+    
+    
+    #   defaults:
+    #     password: 'Password'
+    #   user:
+    #     new:
+    #       email: 'E-mail to sign in.'
+    #     edit:
+    #       email: 'E-mail.'
+    # hints:
+    #   defaults:
+    #     username: 'User name to sign in.'
+    #     password: 'No special characters, please.'
+

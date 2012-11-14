@@ -1,0 +1,24 @@
+%article#campaigns
+  %h1.tcenter=t("site.campaigns.title")
+  .description
+    %h3= t('site.common.details')
+    %dl
+      .clear
+        %dt Username
+        %dd= current_user.email
+      .clear
+        %dt= t('site.common.campaigns')
+        %dd= @campaigns.count
+      .clear
+        %dt= t('site.common.emails')
+        %dd= @email_count
+      .clear
+        %dt= t('site.common.addresses')
+        %dd= @address_count
+        
+  #more_content
+    %h2= t('site.campaigns.title')
+    = render @campaigns
+    .command
+      = paginate @campaigns
+      = link_to t('site.common.new').html_safe + image_tag('16/new.png'), new_campaign_path

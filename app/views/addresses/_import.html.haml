@@ -1,0 +1,9 @@
+%section{id: 'import'}
+  = form_tag("/campaigns/#{@campaign.to_param}/addresses/csv", multipart: true) do
+    %fieldset
+      %legend= t("users.import")
+      .clear
+        = label_tag :file, "csv file"
+        = file_field_tag :file
+        = submit_tag("import now")
+

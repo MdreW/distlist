@@ -1,0 +1,5 @@
+%article{id: "campaigns"}
+  = render 'campaign_details'
+  #more_content
+    = render partial: 'form'
+    .command= link_to(t('site.common.back'), campaigns_path)

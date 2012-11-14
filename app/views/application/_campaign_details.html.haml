@@ -1,0 +1,40 @@
+%h1.tcenter= @campaign.new_record? ? t("site.common.campaign") : @campaign.title
+
+.description
+  %h3= t("campaigns.campaign_details")
+  %dl
+    .clear
+      %dt= t("site.campaigns.sender")
+      %dd
+        %div= @campaign.sender
+   
+    .clear
+      %dt= t("site.campaigns.header")
+      %dd
+        %div= !@campaign.header.blank? ? @campaign.header.html_safe : " - "
+
+    .clear
+      %dt= t("site.campaigns.footer")
+      %dd
+        %div= !@campaign.footer.blank? ? @campaign.footer.html_safe : " - "
+
+    .clear
+      %dt= t("site.campaigns.time_gap")
+      %dd
+        %div= @campaign.time_gap
+
+    .clear
+      %dt= t('site.campaigns.email_count')
+      %dd
+        %div= @campaign.emails.count
+
+    .clear
+      %dt= t('site.common.addresses')
+      %dd
+        %div= @campaign.addresses.count
+
+  .bottom.tcenter
+    - unless @campaign.new_record?
+      = link_to t("site.common.edit").html_safe + image_tag("16/edit.png"), edit_campaign_path(@campaign)
+      = " | "
+      = link_to t("site.common.destroy").html_safe + image_tag('16/destroy.png'), campaign_path(@campaign), method: :delete, confirm: "You are sure?"
