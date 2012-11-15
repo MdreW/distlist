@@ -15,6 +15,11 @@
       %h1
         = image_tag('mail.png')
         DistList
+      #locale
+        .flag.current= image_tag(['flag/',params[:locale].to_s,'.png'].join) if ['en','it','fr'].include?(params[:locale])
+        .flag= link_to image_tag('flag/en.png'), locale: "en"
+        .flag= link_to image_tag('flag/it.png'), locale: "it"
+        .flag= link_to image_tag('flag/fr.png'), locale: "fr"
       = render(:partial => "nav1")
 
     #content
