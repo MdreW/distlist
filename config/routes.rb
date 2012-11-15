@@ -1,4 +1,6 @@
 Distlist::Application.routes.draw do
+  devise_for :users, :path_prefix => '/:locale/auth'
+
   scope "/:locale", :locale => /en|it|fr/ do
     resources :campaigns do
       resources :addresses do
@@ -23,14 +25,8 @@ Distlist::Application.routes.draw do
     get "/admin" => "home#admin", :as => :admin
     get "/attachment/:id/:file_file_name" => "attachments#public", :as => :apublic
   end
-  get "/home" => "home#index"
-  devise_for :users, :path_prefix => '/:locale/auth'
-  devise_scope :user do
-    get "/:locale/login" => "devise/sessions#new"
-    get "/:locale/logout" => "devise/sessions#destroy"
-    get "/:locale/home/user" => "devise/registrations#edit"
-    put "/:locale/home/user/update" => 'devise/registrations#update', :as => 'registration'
-  end
+
+  get "/:locale" => "home#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
