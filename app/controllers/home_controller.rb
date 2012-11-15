@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   before_filter :authenticate_user!, except: [:helpdesk]
   before_filter :admin_required!, only: [:admin]
   def index
-    redirect_to campaigns_path 
+    redirect_to campaigns_path
   end
 
   def helpdesk 

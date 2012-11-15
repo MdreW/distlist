@@ -1,34 +1,35 @@
 Distlist::Application.routes.draw do
-
-  resources :campaigns do
-    resources :addresses do
-      get :import, :on => :collection
-      post :csv, :on => :collection
-      get :export, :on => :collection
+  scope "/:locale", :locale => /en|it|fr/ do
+    resources :campaigns do
+      resources :addresses do
+        get :import, :on => :collection
+        post :csv, :on => :collection
+        get :export, :on => :collection
+      end
+      resources :emails do
+        resources :attachments, :only => [:show, :create, :destroy]
+        put :getlog, :on => :member
+        put :mail_me, :on => :member
+      end
     end
-    resources :emails do
-      resources :attachments, :only => [:show, :create, :destroy]
-      put :getlog, :on => :member
-      put :mail_me, :on => :member
-    end
-  end
   
-  resources :users, :only => [:index, :create, :destroy, :new, :show] do
-    put :endis, :on => :member
-    put :swadmin, :on => :member 
+    resources :users, :only => [:index, :create, :destroy, :new, :show] do
+      put :endis, :on => :member
+      put :swadmin, :on => :member 
+    end
+
+    get "/home" => "home#index" 
+    get "/helpdesk" => "home#helpdesk", :as => :helpdesk
+    get "/admin" => "home#admin", :as => :admin
+    get "/attachment/:id/:file_file_name" => "attachments#public", :as => :apublic
   end
-
-  get "/home" => "home#index" 
-  get "/helpdesk" => "home#helpdesk", :as => :helpdesk
-  get "/admin" => "home#admin", :as => :admin
-  get "/attachment/:id/:file_file_name" => "attachments#public", :as => :apublic
-
-  devise_for :users, :path_prefix => 'auth'
+  get "/home" => "home#index"
+  devise_for :users, :path_prefix => '/:locale/auth'
   devise_scope :user do
-    get "/login" => "devise/sessions#new"
-    get "/logout" => "devise/sessions#destroy"
-    get "/home/user" => "devise/registrations#edit"
-    put "/home/user/update" => 'devise/registrations#update', :as => 'registration'
+    get "/:locale/login" => "devise/sessions#new"
+    get "/:locale/logout" => "devise/sessions#destroy"
+    get "/:locale/home/user" => "devise/registrations#edit"
+    put "/:locale/home/user/update" => 'devise/registrations#update', :as => 'registration'
   end
 
   # The priority is based upon order of creation:
@@ -80,7 +81,7 @@ Distlist::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'home#index'
+  root :to => 'home#index', :locale => :en
 
   # See how all your routes lay out with "rake routes"
 
