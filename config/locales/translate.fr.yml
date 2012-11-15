@@ -1,0 +1,59 @@
+it:
+  site:
+    common:
+      add: 'Add'
+      address: "Address"
+      addresses: "Addresses"
+      are_sure: "Are sure?"
+      back: 'Back'
+      campaign: "Campaign"
+      campaigns: "Campaigns"
+      details: "Details"
+      edit: 'Edit'
+      email: "Email"
+      emails: "Emails"
+      export: 'Export'
+      destroy: 'Elimina'
+      import: 'Import'
+      new: "New"
+      user: "User"
+      users: "Users"
+
+    attachments:
+      title: "Attachments Management"
+      title_list: "Attachment List"
+      new_attachment: "New Attachment"
+      
+
+    campaigns:
+      title: "Campaigns Management"
+      edit_campaign: "Edit Campaign"
+      new_campaign: "New Campaign"
+      statistics: "Campaign Statistics"
+      sender: "Sender"
+      campaign_details: "Campaign Details"
+      header: "Header"
+      footer: "Footer"
+      time_gap: "Send Gap"
+      email_count: "Email Counter"
+      
+
+    emails:
+      send: "Send"
+      title: "Emails Management"
+      subject: "Subject"
+      body: "Message"
+      last_send: "Last Send"
+      log_entry: "Send counter"
+      view_log: "Show Log"
+      new_email: "New Email"
+      edit_email: "Edit Email"
+
+    users:
+      title: "User Management"
+      title_list: "User List"
+      new_user: "New User"
+      swadmin: "Admin Switch"
+      endis: "Enable/Disable"
+
+
