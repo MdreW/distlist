@@ -11,8 +11,9 @@ Before use Distlist you must configure the mail server for sending mail. An exam
 
 At this moment the graphics is strictly css3/html5 and not work correctly with iexplorer. In the next release I will work for  a more compatible template.
 
-To do:
-Send mail for user with specific keys
-Unsubscribe list (if is expected)
-More report
+### To do:
+
+* Send mail for user with specific keys
+* Unsubscribe list (if is expected)
+* More report
 ......
