@@ -3,7 +3,7 @@ class EmailsController < ApplicationController
   before_filter :prerequisite
 
   def index
-    @emails = Email.page(params[:page])
+    @emails = @campaign.emails.page(params[:page])
   end
 
   def show
