@@ -4,31 +4,31 @@ describe UsersController do
   describe "routing" do
 
     it "routes to #index" do
-      get("/users").should route_to("users#index")
+      get("/en/users").should route_to("users#index", :locale => "en")
     end
 
     it "routes to #new" do
-      get("/users/new").should route_to("users#new")
+      get("/en/users/new").should route_to("users#new", :locale => "en")
     end
 
     it "routes to #show" do
-      get("/users/1").should route_to("users#show", :id => "1")
+      get("/en/users/1").should route_to("users#show", :id => "1", :locale => "en")
     end
 
     it "routes to #create" do
-      post("/users").should route_to("users#create")
+      post("/en/users").should route_to("users#create", :locale => "en")
     end
 
     it "routes to #destroy" do
-      delete("/users/1").should route_to("users#destroy", :id => "1")
+      delete("/en/users/1").should route_to("users#destroy", :id => "1", :locale => "en")
     end
 
     it "endis" do
-      put("/users/1/endis").should route_to("users#endis", :id => "1")
+      put("/en/users/1/endis").should route_to("users#endis", :id => "1", :locale => "en")
     end
 
     it "swadmin" do
-      put("/users/1/swadmin").should route_to("users#swadmin", :id => "1")
+      put("/en/users/1/swadmin").should route_to("users#swadmin", :id => "1", :locale => "en")
     end
   end
 end

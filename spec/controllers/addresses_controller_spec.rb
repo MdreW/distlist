@@ -6,19 +6,19 @@ describe AddressesController do
     it "@addresses" do
       address = create(:address)
       sign_in address.campaign.user
-      get :index, {campaign_id: address.campaign.to_param}
+      get :index, {campaign_id: address.campaign.to_param, locale: :en}
       assigns(:addresses).should eq([address])
     end
     it "no login" do
       address = create(:address)
-      get :index, {campaign_id: address.campaign.to_param}
+      get :index, {campaign_id: address.campaign.to_param, locale: :en}
       response.should redirect_to(new_user_session_path)
     end
     it "no autorized" do
       address = create(:address)
       address2 = create(:address)
       sign_in address2.campaign.user
-      get :index, {campaign_id: address.campaign.to_param}
+      get :index, {campaign_id: address.campaign.to_param, locale: :en}
       response.response_code.should == 401
     end
   end
@@ -27,19 +27,19 @@ describe AddressesController do
     it "@address" do
       campaign = create(:campaign)
       sign_in campaign.user
-      get :new, {campaign_id: campaign.to_param}
+      get :new, {campaign_id: campaign.to_param, locale: :en}
       assigns(:address).should be_a_new(Address)
     end
     it "no login" do
       campaign = create(:campaign)
-      get :new, {campaign_id: campaign.to_param}
+      get :new, {campaign_id: campaign.to_param, locale: :en}
       response.should redirect_to(new_user_session_path)
     end
     it "no autorized" do
       campaign = create(:campaign)
       campaign2 = create(:campaign)
       sign_in campaign2.user
-      get :new, {campaign_id: campaign.to_param}
+      get :new, {campaign_id: campaign.to_param, locale: :en}
       response.response_code.should == 401
     end
   end
@@ -48,19 +48,19 @@ describe AddressesController do
     it "@address" do
       address = create(:address)
       sign_in address.campaign.user
-      get :edit, {campaign_id: address.campaign.to_param ,id: address.to_param}
+      get :edit, {campaign_id: address.campaign.to_param ,id: address.to_param, locale: :en}
       assigns(:address).should eq(address)
     end
     it "no login" do
       address = create(:address)
-      get :edit, {campaign_id: address.campaign.to_param ,id: address.to_param}
+      get :edit, {campaign_id: address.campaign.to_param ,id: address.to_param, locale: :en}
       response.should redirect_to(new_user_session_path)
     end
     it "no autorized" do
       address = create(:address)
       address2 = create(:address)
       sign_in address2.campaign.user
-      get :edit, {campaign_id: address.campaign.to_param ,id: address.to_param}
+      get :edit, {campaign_id: address.campaign.to_param ,id: address.to_param, locale: :en}
       response.response_code.should == 401
     end
   end
@@ -71,20 +71,20 @@ describe AddressesController do
         campaign = create(:campaign)
         sign_in campaign.user
         expect {
-          post :create, {campaign_id: campaign.to_param, address: attributes_for(:address)}
+          post :create, {campaign_id: campaign.to_param, address: attributes_for(:address), locale: :en}
         }.to change(Address, :count).by(1)
       end
       it "@address persist" do
         campaign = create(:campaign)
         sign_in campaign.user
-        post :create, {campaign_id: campaign.to_param, address: attributes_for(:address)}
+        post :create, {campaign_id: campaign.to_param, address: attributes_for(:address), locale: :en}
         assigns(:address).should be_a(Address)
         assigns(:address).should be_persisted
       end
       it "redirects to the created address" do
         campaign = create(:campaign)
         sign_in campaign.user
-        post :create, {campaign_id: campaign.to_param, address: attributes_for(:address)}
+        post :create, {campaign_id: campaign.to_param, address: attributes_for(:address), locale: :en}
         response.should redirect_to(campaign_addresses_path(campaign))
       end
     end
@@ -95,7 +95,7 @@ describe AddressesController do
         sign_in campaign.user
         # Trigger the behavior that occurs when invalid params are submitted
         Address.any_instance.stub(:save).and_return(false)
-        post :create, {campaign_id: campaign.to_param, address: {}}
+        post :create, {campaign_id: campaign.to_param, address: {}, locale: :en}
         assigns(:address).should be_a_new(Address)
       end
       it "re-renders 'new'" do
@@ -103,19 +103,19 @@ describe AddressesController do
         sign_in campaign.user
         # Trigger the behavior that occurs when invalid params are submitted
         Address.any_instance.stub(:save).and_return(false)
-        post :create, {campaign_id: campaign.to_param, address: {}}
+        post :create, {campaign_id: campaign.to_param, address: {}, locale: :en}
         response.should render_template("new")
       end
       it "no login" do
         campaign = create(:campaign)
-        post :create, {campaign_id: campaign.to_param, address: {}}
+        post :create, {campaign_id: campaign.to_param, address: {}, locale: :en}
         response.should redirect_to(new_user_session_path)
       end
       it "no autorized" do
         campaign = create(:campaign)
         campaign2 = create(:campaign)
         sign_in campaign2.user
-        post :create, {campaign_id: campaign.to_param, address: attributes_for(:address)}
+        post :create, {campaign_id: campaign.to_param, address: attributes_for(:address), locale: :en}
         response.response_code.should == 401
       end
     end
@@ -126,13 +126,13 @@ describe AddressesController do
       it "@address" do
         address = create(:address)
         sign_in address.campaign.user
-        put :update, {campaign_id: address.campaign, id: address.to_param, address: {'name' => 'updated_name'}}
+        put :update, {campaign_id: address.campaign, id: address.to_param, address: {'name' => 'updated_name'}, locale: :en}
         assigns(:address).name.should eql 'updated_name'
       end
       it "redirects" do
         address = create(:address)
         sign_in address.campaign.user
-        put :update, {campaign_id: address.campaign, id: address.to_param, address: {'name' => 'updated_name'}}
+        put :update, {campaign_id: address.campaign, id: address.to_param, address: {'name' => 'updated_name'}, locale: :en}
         response.should redirect_to(campaign_addresses_path(address.campaign.to_param))
       end
     end
@@ -143,7 +143,7 @@ describe AddressesController do
         sign_in address.campaign.user
         # Trigger the behavior that occurs when invalid params are submitted
         Address.any_instance.stub(:save).and_return(false)
-        put :update, {campaign_id: address.campaign.to_param, id: address.to_param, address: {name: 'updated_name'}}
+        put :update, {campaign_id: address.campaign.to_param, id: address.to_param, address: {name: 'updated_name'}, locale: :en}
         assigns(:address).should eq(address)
       end
 
@@ -152,19 +152,19 @@ describe AddressesController do
         sign_in address.campaign.user
         # Trigger the behavior that occurs when invalid params are submitted
         Address.any_instance.stub(:save).and_return(false)
-        put :update, {campaign_id: address.campaign.user, id: address.to_param, address: {}}
+        put :update, {campaign_id: address.campaign.user, id: address.to_param, address: {}, locale: :en}
         response.should render_template("edit")
       end
       it "no login" do
         address = create(:address)
-        put :update, {campaign_id: address.campaign, id: address.to_param, address: {'name' => 'updated_name'}}
+        put :update, {campaign_id: address.campaign, id: address.to_param, address: {'name' => 'updated_name'}, locale: :en}
         response.should redirect_to(new_user_session_path)
       end
       it "no autorized" do
         address = create(:address)
         address2 = create(:address)
         sign_in address2.campaign.user
-        put :update, {campaign_id: address.campaign, id: address.to_param, address: {'name' => 'updated_name'}}
+        put :update, {campaign_id: address.campaign, id: address.to_param, address: {'name' => 'updated_name'}, locale: :en}
         response.response_code.should == 401
       end
     end
@@ -175,25 +175,25 @@ describe AddressesController do
       address = create(:address)
       sign_in address.campaign.user
       expect {
-        delete :destroy, {campaign_id: address.campaign.to_param, id: address.to_param}
+        delete :destroy, {campaign_id: address.campaign.to_param, id: address.to_param, locale: :en}
       }.to change(Address, :count).by(-1)
     end
     it "redirects to the addresses list" do
       address = create(:address)
       sign_in address.campaign.user
-      delete :destroy, {campaign_id: address.campaign.to_param, id: address.to_param}
+      delete :destroy, {campaign_id: address.campaign.to_param, id: address.to_param, locale: :en}
       response.should redirect_to(campaign_addresses_path(address.campaign))
     end
     it "no login" do
       address = create(:address)
-      delete :destroy, {campaign_id: address.campaign.to_param, id: address.to_param}
+      delete :destroy, {campaign_id: address.campaign.to_param, id: address.to_param, locale: :en}
       response.should redirect_to(new_user_session_path)
     end
     it "no autorized" do
       address = create(:address)
       address2 = create(:address)
       sign_in address2.campaign.user
-      delete :destroy, {campaign_id: address.campaign.to_param, id: address.to_param}
+      delete :destroy, {campaign_id: address.campaign.to_param, id: address.to_param, locale: :en}
       response.response_code.should == 401
     end
   end
