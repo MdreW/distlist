@@ -41,7 +41,7 @@ it:
       title: "Distlist - gestione comunicazioni semplificata"
       title2: "Autenticazione"
       description1: "Ognuno"
-      description2: "non &egrave"
+      description2: "non"
       description3: "Tutti"
       signed_in: Accesso effettuato con successo.
       signed_out: Sei uscito correttamente.

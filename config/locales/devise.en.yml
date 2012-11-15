@@ -25,7 +25,7 @@ en:
       title: 'DistList: simplified comunications manage'
       title2: 'Login'
       description1: "Each"
-      description2: "is not"
+      description2: "not"
       description3: "All"
       signed_in: 'Signed in successfully.'
       signed_out: 'Signed out successfully.'
