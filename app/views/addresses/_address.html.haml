@@ -3,7 +3,7 @@
   = link_to image_tag("16/people.png") + " " + address.recipient, edit_campaign_address_path(@campaign, address)
   .little
     - address.options.each do |option|
-      %span.red= option.tkey
+      = option.tkey
       = " => "
       = option.value
-      = ", "
+      %span.red= " - "
