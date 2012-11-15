@@ -80,19 +80,32 @@ header
       vertical-align: top
   #locale
     position: absolute
-    top: 0.8em
-    margin-left: -9px
+    top: 0.5em
+    margin-left: -16px
     left: 50%
-    width: 18px
-    height: 18px
+    width: 36px
+    height: 36px
     overflow: hidden
+    text-align: center
     .flag
-      width: 18px
-      height: 18px
-      line-height: 18px
+      width: 36px
+      height: 36px
+      line-height: 36px
       text-align:center
+    .current:hover
+      border: none
+    .locale
+      img:hover
+        border: 1px solid $cs23
+        border-radius: 3px
   #locale:hover
-    height: 72px
+    height: 150px
+
+article
+  h1
+    font-weight: bold
+    text-shadow: 0.3em 0.3em 0.3em 
+    color: $cs33
 
 #content
   padding-top: 1em
