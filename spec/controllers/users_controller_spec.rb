@@ -89,8 +89,8 @@ describe UsersController do
         user = create(:admin)
         sign_in user
         User.any_instance.stub(:save).and_return(false)
-        post :create, {user: {}, locale: :en}
-        response.should redirect_to(new_user_path)
+        post :create, {user: nil, locale: :en}
+        response.should render_template("new")
       end
       it "no login" do
         post :create, {user: attributes_for(:user), locale: :en}
