@@ -19,6 +19,8 @@ At this moment the graphics is strictly css3/html5 and not work correctly with i
 * More report
 * More pretty and compatible template
 * Add a WYSIWYG Editor
+* Do not allow simultaneous deliveries of same email
+* Do not allow modify or delete an email when send thread is active
 
 ### collaborate
 
