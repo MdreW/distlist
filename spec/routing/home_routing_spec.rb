@@ -2,9 +2,11 @@ require "spec_helper"
 
 describe HomeController do
   describe "routing" do
-    it "routes to #index" do
-      get("/").should route_to("home#index", :locale => "en")
-      get("/home").should route_to("home#index", :locale => "en")
+    it "routes to root no locale" do
+      get("/").should route_to("home#index", :locale => :en)
+    end
+
+    it "routes to root with locale" do
       get("/en").should route_to("home#index", :locale => "en")
     end
 
