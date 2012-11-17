@@ -2,7 +2,7 @@ class Campaign < ActiveRecord::Base
   belongs_to :user
   has_many :addresses, :dependent => :destroy
   has_many :emails, :dependent => :destroy
-  attr_accessible :footer, :header, :sender_email, :sender_name, :time_gap, :title
+  attr_accessible :footer, :header, :sender_email, :sender_name, :time_gap, :title, :unsubscribe
 
   validates :user_id, :presence => true
   validates :sender_email, :presence => true

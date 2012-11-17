@@ -8,6 +8,7 @@ class CreateCampaigns < ActiveRecord::Migration
       t.string :sender_name
       t.string :sender_email, :null => false, :default => ""
       t.integer :time_gap, :null => false, :default => 0
+      t.boolean :unsubscribe
 
       t.timestamps
     end
