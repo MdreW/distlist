@@ -18,5 +18,7 @@
 
       .separator= f.input :time_gap
 
+      .separator= f.input :unsubscribe, :as => :select, :include_blank => false
+
     %div{class: "form-actions"}
       .separator= f.button :submit

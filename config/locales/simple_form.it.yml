@@ -33,6 +33,7 @@ it:
           header: 'Intestazione'
           footer: 'Chiusura'
           time_gap: "Gap d'invio"
+          unsubscribe: "Permetti disincrizione"
         edit:
           title: 'Titolo'
           sender_name: 'Nome mittente'
@@ -40,6 +41,7 @@ it:
           header: 'Intestazione'
           footer: 'Chiusura'
           time_gap: "Gap d'invio"
+          unsubscribe: "Permetti disincrizione"
       email:
         new:
           subject: "Oggetto"
