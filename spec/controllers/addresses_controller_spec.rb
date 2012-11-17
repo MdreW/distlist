@@ -197,4 +197,24 @@ describe AddressesController do
       response.response_code.should == 401
     end
   end
+
+  describe "Unsubscribe" do
+    describe "success" do
+      it "correct param" do
+        campaign = create(:campaign, unsubscribe: true)
+        address = create(:address, campaign_id: campaign.to_param)
+        get :unsubscribe, {campaign_id: address.campaign.to_param, pepper: address.pepper, locale: :en}
+        assigns(:address).should eql(address)
+      end
+    end
+    describe "fail" do
+    end
+  end
+
+  describe "Unsubscribe_confirm" do
+    describe "success" do
+    end
+    describe "fail" do
+    end
+  end
 end

@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20121008071018) do
 
   add_index "addresses", ["campaign_id"], :name => "index_addresses_on_campaign_id"
   add_index "addresses", ["email"], :name => "index_addresses_on_email"
+  add_index "addresses", ["pepper"], :name => "index_addresses_on_pepper", :unique => true
 
   create_table "attachments", :force => true do |t|
     t.integer  "email_id",                                  :null => false
@@ -50,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20121008071018) do
     t.string   "sender_name"
     t.string   "sender_email", :default => "", :null => false
     t.integer  "time_gap",     :default => 0,  :null => false
+    t.boolean  "unsubscribe"
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
   end

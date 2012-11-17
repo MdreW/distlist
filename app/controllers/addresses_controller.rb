@@ -1,7 +1,7 @@
 class AddressesController < ApplicationController
   require 'csv'
   before_filter :authenticate_user!, except: [:unsubscribe, :unsubscribe_confirm]
-  before_filter :prerequisite
+  before_filter :prerequisite, except: [:unsubscribe, :unsubscribe_confirm]
 
   def index
     @addresses = @campaign.addresses.page(params[:page])
@@ -70,12 +70,14 @@ class AddressesController < ApplicationController
     end
   end
 
-  def unsibscribe
+  def unsubscribe
+    @campaign = Campaign.find(params[:campaign_id])
     record_not_found if @campaign.unsubscribe?
     @address = @campaign.addresses.find_by_pepper(params[:pepper])
   end
 
   def unsubscribe_confirm
+    @campaign = Campaign.find(params[:campaign_id])
     record_not_found if @campaign.unsubscribe?
     @address = @campaign.addresses.find(params[:id])
     @address.delete if @address.pepper == params[:pepper]
