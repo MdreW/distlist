@@ -208,13 +208,62 @@ describe AddressesController do
       end
     end
     describe "fail" do
+      it "incorrect campaign_id" do
+        campaign = create(:campaign, unsubscribe: true)
+        campaign2 = create(:campaign, unsubscribe: true)
+        address = create(:address, campaign_id: campaign.to_param)
+        get :unsubscribe, {campaign_id: campaign2.to_param, pepper: address.pepper, locale: :en}
+        response.response_code.should == 404
+      end
+      it "incorrect pepper" do
+        campaign = create(:campaign, unsubscribe: true)
+        address = create(:address, campaign_id: campaign.to_param)
+        address2 = create(:address)
+        get :unsubscribe, {campaign_id: campaign.to_param, pepper: address2.pepper, locale: :en}
+        response.response_code.should == 404
+      end
     end
   end
 
   describe "Unsubscribe_confirm" do
     describe "success" do
+      it "correct param" do
+        campaign = create(:campaign, unsubscribe: true)
+        address = create(:address, campaign_id: campaign.to_param)
+        post :unsubscribe_confirm, {campaign_id: address.campaign.to_param, pepper: address.pepper, id: address.to_param, locale: :en}
+        assigns(:address).should eql(address)
+      end
+      it "address destryed" do
+        campaign = create(:campaign, unsubscribe: true)
+        address = create(:address, campaign_id: campaign.to_param)
+        expect {
+          post :unsubscribe_confirm, {campaign_id: address.campaign.to_param, pepper: address.pepper, id: address.to_param, locale: :en}
+        }.to change(Address, :count).by(-1)
+      end
     end
     describe "fail" do
+      it "incorrect pepper" do
+        campaign = create(:campaign, unsubscribe: true)
+        address = create(:address, campaign_id: campaign.to_param)
+        address2 = create(:address)
+        post :unsubscribe_confirm, {campaign_id: address.campaign.to_param, pepper: address2.pepper, id: address.to_param, locale: :en}
+      end
+      it "incorrect id" do
+        campaign = create(:campaign, unsubscribe: true)
+        address = create(:address, campaign_id: campaign.to_param)
+        address2 = create(:address)
+        post :unsubscribe_confirm, {campaign_id: address.campaign.to_param, pepper: address.pepper, id: address2.to_param, locale: :en}
+        response.response_code.should == 401
+      end
+      it "incorrect campaign_id" do
+        campaign = create(:campaign, unsubscribe: true)
+        campaign2 = create(:campaign, unsubscribe: true)
+        address = create(:address, campaign_id: campaign.to_param)
+        post :unsubscribe_confirm, {campaign_id: campaign2.to_param, pepper: address.pepper, id: address.to_param, locale: :en}
+        response.response_code.should == 401
+      end
+
+    
     end
   end
 end
