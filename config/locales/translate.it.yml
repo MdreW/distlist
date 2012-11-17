@@ -19,6 +19,14 @@ it:
       user: "Utente"
       users: "Utenti"
 
+    addresses:
+      title: "Gestione indirizzi"
+      title_unsubscribe: "Annullamento inscrizione"
+      title_unsubscribed: "Iscrizione annullata"
+      unsubscribe: "Annulla iscrizione"
+      unsubscribe_action: "Annulla l'inscrizione ora"
+      byebye: "Tutti i suoi dati sono stati eliminati dalla lista selezionata."
+
     attachments:
       title: "Gestione allegati"
       title_list: "Lista allegati"
