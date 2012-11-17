@@ -31,5 +31,12 @@ describe CampaignsController do
       delete("/en/campaigns/1").should route_to("campaigns#destroy", :id => "1", :locale => "en")
     end
 
+    it "unsubscribe" do
+      get("/en/unsubscribe/1/1abcdef1111111111111111111111111111111111111111111").should route_to("campaigns#unsubscribe", :campaign_id => "1", :pepper => "1abcdef1111111111111111111111111111111111111111111", :locale => "en")
+    end
+
+    it "unsubscribe_confirm" do
+      post("/en/unsubscribe/1/1abcdef1111111111111111111111111111111111111111111/1").should route_to("campaigns#unsubscribe_confirm", :campaign_id => "1", :pepper => "1abcdef1111111111111111111111111111111111111111111", :id => "1", :locale => "en")
+    end
   end
 end

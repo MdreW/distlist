@@ -24,6 +24,8 @@ Distlist::Application.routes.draw do
     get "/helpdesk" => "home#helpdesk", :as => :helpdesk
     get "/admin" => "home#admin", :as => :admin
     get "/attachment/:id/:file_file_name" => "attachments#public", :as => :apublic
+    get "/unsubscribe/:campaign_id/:pepper" => "campaigns#unsubscribe", :as => :unsubscribe #, :constraints => { :pepper => /[0-9a-f]/  }
+    post "/unsubscribe/:campaign_id/:pepper/:id" => "campaigns#unsubscribe_confirm", :as => :unsubscribe_confirm
   end
 
   get "/:locale" => "home#index"
