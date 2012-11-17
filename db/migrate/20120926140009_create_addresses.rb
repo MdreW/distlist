@@ -13,5 +13,6 @@ class CreateAddresses < ActiveRecord::Migration
     end
     add_index :addresses, :campaign_id
     add_index :addresses, :email
+    add_index :addresses, :pepper, :unique => true
   end
 end
