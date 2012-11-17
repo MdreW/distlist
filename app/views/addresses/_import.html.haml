@@ -1,4 +1,4 @@
-%section{id: 'import'}
+%section#import
   = form_tag("/campaigns/#{@campaign.to_param}/addresses/csv", multipart: true) do
     %fieldset
       %legend= t("users.import")
