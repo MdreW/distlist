@@ -19,6 +19,14 @@ en:
       user: "User"
       users: "Users"
 
+    addresses:
+      title: "Address managment"
+      title_unsubscribe: "Unsubscribe"
+      title_unsubscribed: "Unsubscribed"
+      unsubscribe: "Unsubscribe"
+      unsubscribe_action: "Unsubscribe now"
+      byebye: "Its data were eliminated."
+
     attachments:
       title: "Attachments Management"
       title_list: "Attachment List"
