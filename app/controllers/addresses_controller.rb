@@ -1,6 +1,6 @@
 class AddressesController < ApplicationController
   require 'csv'
-  before_filter :authenticate_user!, :except: [:unsubscribe, :unsubscribe_confirm]
+  before_filter :authenticate_user!, except: [:unsubscribe, :unsubscribe_confirm]
   before_filter :prerequisite
 
   def index
