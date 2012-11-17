@@ -2,7 +2,7 @@
   = render :partial => "campaign_details"
   #more_content
     %section{id: 'addresses'}
-      %h2.tcenter= t("addresses.title")
+      %h2.tcenter= t("site.addresses.title")
       %ul.list= render @addresses
       .command
         = paginate @addresses
