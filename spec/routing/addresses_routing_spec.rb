@@ -38,5 +38,13 @@ describe AddressesController do
     it "routes to export" do
       get("/en/campaigns/1/addresses/export").should route_to("addresses#export", :campaign_id => "1", :locale => "en")
     end
+
+    it "unsubscribe" do
+      get("/en/unsubscribe/1/1abcdef1111111111111111111111111111111111111111111").should route_to("addresses#unsubscribe", :campaign_id => "1", :pepper => "1abcdef1111111111111111111111111111111111111111111", :locale => "en")
+    end
+
+    it "unsubscribe_confirm" do
+      post("/en/unsubscribe/1/1abcdef1111111111111111111111111111111111111111111/1").should route_to("addresses#unsubscribe_confirm", :campaign_id => "1", :pepper => "1abcdef1111111111111111111111111111111111111111111", :id => "1", :locale => "en")
+    end
   end
 end

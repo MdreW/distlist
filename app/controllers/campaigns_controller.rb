@@ -55,4 +55,10 @@ class CampaignsController < ApplicationController
       render action: "show"
     end
   end
+
+  def unsibscribe
+  end
+
+  def unsubscribe_confirm
+  end
 end

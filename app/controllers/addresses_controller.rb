@@ -70,10 +70,15 @@ class AddressesController < ApplicationController
     end
   end
 
+  def unsibscribe
+  end
+
+  def unsubscribe_confirm
+  end
+
   private
 
   def prerequisite
-    @submenu = true
     @campaign = current_user.campaigns.find(params[:campaign_id])
   end
 
