@@ -2,13 +2,14 @@ class Address < ActiveRecord::Base
   belongs_to :campaign
   has_many :options
   attr_accessible :email, :name, :surname, :options_attributes
-  before_save :add_pepper
+  before_validation :add_pepper
   accepts_nested_attributes_for :options, :allow_destroy => true, :reject_if => proc {|o| o['key'].blank? or  ['email','name','surname'].include?(o['key']) }
   attr_accessor :status
 
   validates :campaign_id, :presence => true
   validates :email, :presence => true, :uniqueness => {:scope => :campaign_id}
   validates :fail_count, :presence => true, :numericality => { :only_integer => true, :greater_than_or_equal_to => 0 }
+  validates :pepper, :presence => true, :format => { :with => /\A[0-9a-f]+\z/ }
 
   default_scope order(:email)
 
@@ -51,6 +52,6 @@ class Address < ActiveRecord::Base
   private
 
   def add_pepper
-    self.pepper = SecureRandom.hex(25) unless self.pepper.length == 50
+    self.pepper = SecureRandom.hex(25) if pepper.blank?
   end
 end
