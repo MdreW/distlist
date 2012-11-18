@@ -15,7 +15,6 @@ At this moment the graphics is strictly css3/html5 and not work correctly with i
 ### To do:
 
 * Send mail only for user with specific keys
-* Unsubscribe from list (if is expected)
 * More report
 * More pretty and compatible template
 * Add a WYSIWYG Editor

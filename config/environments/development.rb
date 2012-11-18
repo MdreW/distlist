@@ -41,15 +41,24 @@ Distlist::Application.configure do
   #email
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
+  #config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.smtp_settings = {
+  #  :address              => 'posta.isprambiente.it',
+  #  :port                 => '25',
+  #  :domain               => 'isprambiente.it',
+  #  :user_name            => 'andrea.ranaldi',
+  #  :password             => 'sha9Xees',
+  #  :authentication       => 'plain',
+  #  :enable_starttls_auto => true,
+  #  :openssl_verify_mode  => OpenSSL::SSL::VERIFY_NONE,
+  #}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => '',
-    :port                 => '',
-    :domain               => '',
-    :user_name            => '',
-    :password             => '',
-    :authentication       => '',
-    :enable_starttls_auto => true,
-    :openssl_verify_mode  => OpenSSL::SSL::VERIFY_NONE,
-  }
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'gmail.com',
+    :user_name            => 'andrea.ranaldi',
+    :password             => 'IlPaguro01',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  }
 end

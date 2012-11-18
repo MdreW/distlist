@@ -73,6 +73,7 @@ class AddressesController < ApplicationController
   def unsubscribe
     @campaign = Campaign.where(:unsubscribe => true).find(params[:campaign_id])
     @address = @campaign.addresses.find_by_pepper(params[:pepper])
+    record_not_found if @address.blank?
   end
 
   def unsubscribe_confirm

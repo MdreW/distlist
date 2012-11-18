@@ -1,3 +1,7 @@
-.header= @header.html_safe
-.body= @body.html_safe
-.footer= @footer.html_safe
+.header= @address.replace(@email.campaign.header).html_safe
+.body= @address.replace(@email.body)
+.footer= @address.replace(@email.campaign.footer)
+- if @address.campaign.unsubscribe?
+  .unsubscribe
+    For unsubscribe follow this link: 
+    = link_to(unsubscribe_url(@address.campaign.to_param, @address.pepper, locale: :en), unsubscribe_url(@address.campaign.to_param, @address.pepper, locale: :en))

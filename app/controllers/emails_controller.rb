@@ -41,13 +41,13 @@ class EmailsController < ApplicationController
   def destroy
     @email = @campaign.emails.find(params[:id])
     @email.destroy
-    redirect_to campaign_emails_path
+    redirect_to campaign_emails_path(@campaign)
   end
 
   def mail_me
     @email = @campaign.emails.find(params[:id])
     @email.mail_me!
-    redirect_to campaign_email_path(@email), notice: "Started... What's It Going to Be Today?" 
+    redirect_to campaign_email_path(@campaign, @email), notice: "Started... What's It Going to Be Today?" 
   end
   
   def getlog

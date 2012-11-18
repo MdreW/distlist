@@ -7,10 +7,8 @@ class Postman < ActionMailer::Base
   #   en.postman.to_list.subject
   #
   def to_list(email, address)
-    @header = address.replace(email.campaign.header) 
-    @body = address.replace(email.body)
-    @footer = address.replace(email.campaign.footer)
-    
+    @address = address
+    @email = email
     email.attachments.attached.each {|a| attachments[a.file_file_name] = File.read(a.file.path)}
     email.attachments.inline.each {|a| attachments.inline[a.file_file_name] = File.read(a.file.path)}
 

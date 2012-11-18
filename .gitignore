@@ -11,6 +11,9 @@
 /db/*.sqlite3
 /config/database.yml
 
+# Ignore personal config
+/config/environments/development.rb
+
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
