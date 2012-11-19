@@ -262,6 +262,12 @@ describe AddressesController do
         post :unsubscribe_confirm, {campaign_id: campaign2.to_param, pepper: address.pepper, id: address.to_param, locale: :en}
         response.response_code.should == 401
       end
+      it "Unsubscrive not active" do
+        campaign = create(:campaign, unsubscribe: false)
+        address = create(:address, campaign_id: campaign.to_param)
+        post :unsubscribe_confirm, {campaign_id: campaign.to_param, pepper: address.pepper, id: address.to_param, locale: :en}
+        response.response_code.should == 401
+      end
     end
   end
 end
