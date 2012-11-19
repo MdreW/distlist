@@ -1,6 +1,6 @@
 .header= @address.replace(@email.campaign.header).html_safe
-.body= @address.replace(@email.body)
-.footer= @address.replace(@email.campaign.footer)
+.body= @address.replace(@email.body).html_safe
+.footer= @address.replace(@email.campaign.footer).html_safe
 - if @email.campaign.unsubscribe?
   .unsubscribe
     For unsubscribe follow this link: 
