@@ -11,6 +11,10 @@
         .clear
           %dt= t("site.emails.body")
           %dd= @email.body.html_safe
+
+        .clear
+          %dt= t("site.emails.key_required")
+          %dd= @email.key_required
         
         .clear
           %dt= t("site.emails.last_send")

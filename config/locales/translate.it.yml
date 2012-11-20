@@ -51,6 +51,7 @@ it:
       title: "Gestione emails"
       subject: "Oggetto"
       body: "Messaggio"
+      key_required: "Chiavi necessarie"
       last_send: "Ultimo invio"
       log_entry: "Invii"
       view_log: "Mostra log"

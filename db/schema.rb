@@ -59,12 +59,13 @@ ActiveRecord::Schema.define(:version => 20121008071018) do
   add_index "campaigns", ["user_id"], :name => "index_campaigns_on_user_id"
 
   create_table "emails", :force => true do |t|
-    t.integer  "campaign_id",                    :null => false
-    t.string   "subject",     :default => "",    :null => false
+    t.integer  "campaign_id",                     :null => false
+    t.string   "subject",      :default => "",    :null => false
     t.text     "body"
-    t.boolean  "sended",      :default => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.boolean  "sended",       :default => false
+    t.string   "key_required", :default => "",    :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   add_index "emails", ["campaign_id"], :name => "index_emails_on_campaign_id"

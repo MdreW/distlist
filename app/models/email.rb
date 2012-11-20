@@ -5,11 +5,13 @@ class Email < ActiveRecord::Base
   has_many :logs, :dependent => :destroy
  
   attr_accessor :idlog
-  attr_accessible :body, :subject, :idlog
+  attr_accessible :body, :subject, :idlog, :key_required
 
   validates :campaign_id, :presence => true
   validates :body, :presence => true
   validates :subject, :presence => true, :uniqueness => { :scope => :campaign_id}
+  validates :key_required, :format => { :with => /^[a-z0-9_\s]*$/, :message => "Only lowercase letters, number, _ allowed" }, :allow_blank => true
+
 
   scope :sended, where(sended: true)
   scope :not_sended, where("sended is not ?", true)
@@ -26,19 +28,25 @@ class Email < ActiveRecord::Base
     self.toggle!(:sended) unless self.sended == true
   end
 
+  def hkey_required
+    return key_required.split
+  end
+
   def mail_me!
-    self.sended!
+    sended!
     Thread.new {
-      log = self.logs.create!
-      self.addresses.each do |address|
-        begin
-          Postman.to_list(self,address).deliver
-          address.sending_result(true)
-          log.add_row(address.email,true)
-          sleep(self.campaign.time_gap) if self.campaign.time_gap > 0
-        rescue
-          address.sending_result(false)
-          log.add_row(address.email,false)
+      log = logs.create!
+      addresses.each do |address|
+        if key_required.blank? || address.options.map{|o| o.key} & hkey_required == hkey_required
+          begin
+            Postman.to_list(self,address).deliver
+            address.sending_result(true)
+            log.add_row(address.email,true)
+            sleep(self.campaign.time_gap) if self.campaign.time_gap > 0
+          rescue
+            address.sending_result(false)
+            log.add_row(address.email,false)
+          end
         end
       end
     }

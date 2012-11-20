@@ -41,6 +41,25 @@ describe Email do
         email.title.should eql "email##{email.id} | test persistent title"
       end
     end
+    describe "hkey_required" do
+      it "key value nil" do
+        email = create(:email)
+        email.hkey_required.should eql []
+      end
+      it "key value full" do
+        email = create(:email, :key_required => "casa cane gatto")
+        email.hkey_required.should eql ["casa","cane","gatto"]
+      end
+      it "too whitespace" do
+       email = create(:email, :key_required => "casa     cane        gatto")
+       email.hkey_required.should eql ["casa","cane","gatto"]
+      end
+      it "invalid character" do
+       email = create(:email)
+       email.key_required = "caNe"
+       email.save.should eql false
+      end
+    end
   end
   
   describe "scope" do

@@ -51,6 +51,7 @@ en:
       title: "Emails Management"
       subject: "Subject"
       body: "Message"
+      key_required: "Key Required"
       last_send: "Last Send"
       log_entry: "Send counter"
       view_log: "Show Log"
