@@ -7,3 +7,10 @@ $ ->
     if $('select#email_idlog').val().length != 0
       $(this).closest("form").submit()
 
+$().ready ->
+  opts =
+    lang: "en" # set your language
+    styleWithCSS: true
+    height: 300
+    toolbar: "maxi"
+  $(".elrte").elrte opts
