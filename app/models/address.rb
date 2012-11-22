@@ -1,7 +1,9 @@
 class Address < ActiveRecord::Base
   belongs_to :campaign
   has_many :options
-  attr_accessible :email, :name, :surname, :options_attributes
+  has_many :taggings
+  has_many :tags, through: :taggings
+  attr_accessible :email, :name, :surname, :tag_list, :options_attributes
   before_validation :add_pepper
   accepts_nested_attributes_for :options, :allow_destroy => true, :reject_if => proc {|o| o['key'].blank? or  ['email','name','surname'].include?(o['key']) }
   attr_accessor :status
@@ -47,6 +49,24 @@ class Address < ActiveRecord::Base
     self.inactive = false
     self.fail_count = 0
     self.save
+  end
+
+  def self.tagged_with(name)
+    Tag.find_by_name!(name).addresses
+  end
+
+  def self.tag_counts
+    Tag.select("tags.*, count(taggings.tag_id) as count").joins(:taggings).group("taggings.tag_id")
+  end
+
+  def tag_list
+    tags.map(&:name).join(", ")
+  end
+
+  def tag_list=(names)
+    self.tags = names.split(",").map do |n|
+      Tag.where(name: n.strip).first_or_create!
+    end
   end
 
   private

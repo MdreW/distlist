@@ -14,8 +14,12 @@
 
         .clear
           %dt= t("site.emails.key_required")
-          %dd= @email.key_required
-        
+          %dd= @email.key_required.blank? ? " - " : @email.key_required
+
+        .clear
+          %dt= t("site.emails.htag_required")
+          %dd= @email.tag_required.blank? ? " - " : @email.tag_required
+
         .clear
           %dt= t("site.emails.last_send")
           %dd= @email.logs.empty? ? " - " : @email.logs.last.created_at
