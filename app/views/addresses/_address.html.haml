@@ -1,11 +1,11 @@
 %li{id: address.div, class: [cycle('bdark',nil),'list']}
   .fright= link_to image_tag('16/destroy.png'), campaign_address_path(@campaign, address), method: :delete, confirm: I18n.t('site.common.are_sure')
   = link_to image_tag("16/people.png") + " " + address.recipient, edit_campaign_address_path(@campaign, address)
+  - unless address.tag_list.blank?
+    %span.tag= " | " + address.tag_list
   .little
     - address.options.each do |option|
       = option.tkey
       = " => "
       = option.value
       %span.red= " - "
-  .little
-    = unsubscribe_url(@campaign, address.pepper, :locale => :en)

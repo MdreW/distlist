@@ -44,20 +44,36 @@ describe Email do
     describe "hkey_required" do
       it "key value nil" do
         email = create(:email)
-        email.hkey_required.should eql []
+        email.instance_eval{hkey_required}.should eql []
       end
       it "key value full" do
-        email = create(:email, :key_required => "casa cane gatto")
-        email.hkey_required.should eql ["casa","cane","gatto"]
+        email = create(:email, :key_required => "casa, cane, gatto")
+        email.instance_eval{hkey_required}.should eql ["casa","cane","gatto"]
       end
       it "too whitespace" do
-       email = create(:email, :key_required => "casa     cane        gatto")
-       email.hkey_required.should eql ["casa","cane","gatto"]
+        email = create(:email, :key_required => "casa   ,  cane  ,      gatto")
+        email.instance_eval{hkey_required}.should eql ["casa","cane","gatto"]
       end
       it "invalid character" do
        email = create(:email)
        email.key_required = "caNe"
        email.save.should eql false
+      end
+    end
+    describe "htag_finder" do
+      it "tag list is empty" do
+        email = create(:email)
+        email.instance_eval{htag_finder}.should eql nil
+      end
+      it "three valid tag" do
+        hash = {:tags => {:name => ["cane","casa","gatto"]}}
+        email = create(:email, :tag_required => "cane, casa, gatto")
+        email.instance_eval{htag_finder}.should eql hash 
+      end
+      it "too whitespace" do
+        hash = {:tags => {:name=>["cane", "", "casa", "", "", "gatto"]}} 
+        email = create(:email, :tag_required => "cane   ,, casa,  ,   ,   gatto")
+        email.instance_eval{htag_finder}.should eql hash
       end
     end
   end

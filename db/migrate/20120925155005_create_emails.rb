@@ -6,6 +6,7 @@ class CreateEmails < ActiveRecord::Migration
       t.text :body
       t.boolean :sended, :default => false
       t.string :key_required, :null => false, :default => ''
+      t.string :tag_required, :null => false, :default => ''
 
       t.timestamps
     end
