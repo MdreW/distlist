@@ -15,17 +15,18 @@ At this moment the graphics is strictly css3/html5 and not work correctly with i
 ### Features
 * Multiple campaign manager
 * Email and address are limited for each campaign
-* Text replacement for email before send
+* replacement text  based on the address for email before send
 * Keys and values in each address for text replacement
 * Tags for address definition
 * send email for tagged user
 * send email for specific key owner
 * WYSIWYG Editor for email
 * attachment management for email:
-* * in line (as email text)
-* * attached (attached in email)
-* * off-lie (accessible in the site with link)
-* Totally open source
+* - in line (as email text)
+* - attached (attached in email)
+* - off-lie (accessible in the site with link)
+* Address unsubscription 
+* Totally open source!
 
 ### To do:
 
