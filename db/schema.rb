@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121008071018) do
+ActiveRecord::Schema.define(:version => 20121121143039) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "campaign_id",               :default => 0,     :null => false
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20121008071018) do
     t.text     "body"
     t.boolean  "sended",       :default => false
     t.string   "key_required", :default => "",    :null => false
+    t.string   "tag_required", :default => "",    :null => false
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
   end
@@ -91,6 +92,24 @@ ActiveRecord::Schema.define(:version => 20121008071018) do
 
   add_index "options", ["address_id"], :name => "index_options_on_address_id"
   add_index "options", ["key"], :name => "index_options_on_key"
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id",     :null => false
+    t.integer  "address_id", :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "taggings", ["address_id"], :name => "index_taggings_on_address_id"
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+
+  create_table "tags", :force => true do |t|
+    t.string   "name",       :default => "", :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "tags", ["name"], :name => "index_tags_on_name", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
