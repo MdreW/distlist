@@ -1,5 +1,5 @@
-distlist
-========
+distlist 1.1
+============
 
 DistList - Simplified management of email communications
 
